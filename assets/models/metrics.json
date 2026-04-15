@@ -1,0 +1,188 @@
+{
+  "dataset_path": "/content/drive/MyDrive/AIT/ML/citibike-netdemand-prediction/data/proceed/micro_mobility_two_targets_training_data_2025_v1.csv",
+  "feature_columns": [
+    "station_id",
+    "hour",
+    "lat",
+    "lng",
+    "is_weekend",
+    "day_of_week",
+    "hour_sin",
+    "hour_cos",
+    "day_sin",
+    "day_cos",
+    "trips_out_lag_1h",
+    "trips_out_lag_2h",
+    "trips_out_lag_3h",
+    "trips_out_lag_24h",
+    "trips_out_rolling_mean_3h",
+    "trips_in_lag_1h",
+    "trips_in_lag_2h",
+    "trips_in_lag_3h",
+    "trips_in_lag_24h",
+    "trips_in_rolling_mean_3h",
+    "lag_net_flow_1h",
+    "lag_net_flow_24h"
+  ],
+  "train_rows": 4091287,
+  "val_rows": 81816,
+  "test_rows": 81816,
+  "test_zero_ratio_trips_out": 0.9584188911704312,
+  "test_zero_ratio_trips_in": 0.9586877872298817,
+  "validation_setup": {
+    "test_split": "last_7_days",
+    "validation_split": "last_7_days_of_training_period"
+  },
+  "training_time_seconds": 1695.8304998890007,
+  "model_params_out": {
+    "objective": "count:poisson",
+    "n_estimators": 3000,
+    "learning_rate": 0.03,
+    "max_depth": 6,
+    "min_child_weight": 5,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_alpha": 0.0,
+    "reg_lambda": 1.0,
+    "random_state": 42,
+    "n_jobs": -1,
+    "early_stopping_rounds": 100
+  },
+  "model_params_in": {
+    "objective": "count:poisson",
+    "n_estimators": 3000,
+    "learning_rate": 0.03,
+    "max_depth": 6,
+    "min_child_weight": 5,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_alpha": 0.0,
+    "reg_lambda": 1.0,
+    "random_state": 42,
+    "n_jobs": -1,
+    "early_stopping_rounds": 100
+  },
+  "metrics_out": {
+    "train": {
+      "rmse": 0.5779365283887354,
+      "mae": 0.15319852530956268,
+      "r2": 0.7262453436851501
+    },
+    "test": {
+      "rmse": 0.32897571002435116,
+      "mae": 0.09059274196624756,
+      "r2": 0.1778329610824585
+    },
+    "test_nonzero": {
+      "rmse": 1.1252629714485989,
+      "mae": 0.8165512084960938,
+      "r2": -0.364115834236145,
+      "rows": 3402
+    }
+  },
+  "metrics_in": {
+    "train": {
+      "rmse": 0.584999911071901,
+      "mae": 0.155939519405365,
+      "r2": 0.7188584804534912
+    },
+    "test": {
+      "rmse": 0.3365462908122304,
+      "mae": 0.09345677495002747,
+      "r2": 0.1567820906639099
+    },
+    "test_nonzero": {
+      "rmse": 1.1349710879235486,
+      "mae": 0.8296198844909668,
+      "r2": -0.3090134859085083,
+      "rows": 3380
+    }
+  },
+  "metrics_net_flow_derived": {
+    "test": {
+      "rmse": 0.3735240460906459,
+      "mae": 0.090507373213768,
+      "r2": 0.008254945278167725
+    },
+    "test_nonzero": {
+      "rmse": 1.5426136235904997,
+      "mae": 1.301019310951233,
+      "r2": 0.09548234939575195,
+      "rows": 4375
+    }
+  },
+  "baseline_metrics_out": {
+    "zero": {
+      "rmse": 0.3683344803262921,
+      "mae": 0.06353280693292618,
+      "r2": -0.03066408634185791
+    },
+    "lag_1h": {
+      "rmse": 0.38252888118564227,
+      "mae": 0.07947100698947906,
+      "r2": -0.11163151264190674
+    },
+    "lag_24h": {
+      "rmse": 0.4077390012608374,
+      "mae": 0.08629118651151657,
+      "r2": -0.2629812955856323
+    },
+    "rolling_mean_3h": {
+      "rmse": 0.3294298136702262,
+      "mae": 0.07665575295686722,
+      "r2": 0.17556160688400269
+    }
+  },
+  "baseline_metrics_in": {
+    "zero": {
+      "rmse": 0.3719667305528185,
+      "mae": 0.06353280693292618,
+      "r2": -0.030050158500671387
+    },
+    "lag_1h": {
+      "rmse": 0.3871973332348723,
+      "mae": 0.07944656163454056,
+      "r2": -0.11613035202026367
+    },
+    "lag_24h": {
+      "rmse": 0.40725910962350526,
+      "mae": 0.08533783257007599,
+      "r2": -0.2347862720489502
+    },
+    "rolling_mean_3h": {
+      "rmse": 0.33251955365644426,
+      "mae": 0.07677796483039856,
+      "r2": 0.1768394112586975
+    }
+  },
+  "baseline_metrics_net_flow_derived": {
+    "lag_1h": {
+      "rmse": 0.5157867524721106,
+      "mae": 0.1183876022696495,
+      "r2": -0.8910512924194336
+    },
+    "lag_24h": {
+      "rmse": 0.4991926589380195,
+      "mae": 0.11858316510915756,
+      "r2": -0.7713292837142944
+    },
+    "rolling_mean_3h": {
+      "rmse": 0.4260147049665004,
+      "mae": 0.10375314205884933,
+      "r2": -0.29006659984588623
+    },
+    "zero": {
+      "rmse": 0.37507537243275446,
+      "mae": 0.07470421493053436,
+      "r2": 0.0
+    }
+  },
+  "artifact_paths": {
+    "model_out_path": "/content/drive/MyDrive/AIT/ML/citibike-netdemand-prediction/artifacts/model_training/xgb_two_target_count/v1_0/xgb_trips_out_model.json",
+    "model_in_path": "/content/drive/MyDrive/AIT/ML/citibike-netdemand-prediction/artifacts/model_training/xgb_two_target_count/v1_0/xgb_trips_in_model.json",
+    "metrics_path": "/content/drive/MyDrive/AIT/ML/citibike-netdemand-prediction/artifacts/model_training/xgb_two_target_count/v1_0/metrics.json",
+    "predictions_path": "/content/drive/MyDrive/AIT/ML/citibike-netdemand-prediction/artifacts/model_training/xgb_two_target_count/v1_0/test_predictions.parquet",
+    "feature_importance_out_path": "/content/drive/MyDrive/AIT/ML/citibike-netdemand-prediction/artifacts/model_training/xgb_two_target_count/v1_0/feature_importance_out_gain.csv",
+    "feature_importance_in_path": "/content/drive/MyDrive/AIT/ML/citibike-netdemand-prediction/artifacts/model_training/xgb_two_target_count/v1_0/feature_importance_in_gain.csv"
+  }
+}
