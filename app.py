@@ -180,7 +180,7 @@ def predict_counts(feature_row: dict, model_out, model_in):
 
 def main():
     st.set_page_config(page_title='Citi Bike Simple Inference', layout='centered')
-    st.title('Citi Bike Prediction (Simple)')
+    st.title('Citi Bike Prediction')
     st.markdown(f"**Group:** {GROUP_NAME}")
     st.markdown('**Members:** ' + ', '.join(GROUP_MEMBERS))
     # st.caption('Inputs: station, date, period. Action selects which prediction to return.')
