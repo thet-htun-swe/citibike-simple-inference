@@ -6,24 +6,37 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import xgboost as xgb
+from pathlib import Path
+import os
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-# Default to app-local assets so Streamlit Cloud can run directly from repo.
-# Optional override via env var `SIMPLE_UI_ASSET_ROOT`.
-ASSET_ROOT = Path(
-    os.getenv(
-        'SIMPLE_UI_ASSET_ROOT',
-        str(PROJECT_ROOT / 'simple_inference_ui' / 'assets'),
-    )
-)
-MODEL_DIR = ASSET_ROOT / 'models'
-REF_DIR = ASSET_ROOT / 'reference'
+PROJECT_ROOT = Path(__file__).resolve().parent
+ASSET_ROOT = Path(os.getenv("ASSET_ROOT", str(PROJECT_ROOT / "assets")))
 
-MODEL_OUT_PATH = MODEL_DIR / 'xgb_trips_out_model.json'
-MODEL_IN_PATH = MODEL_DIR / 'xgb_trips_in_model.json'
-METRICS_PATH = MODEL_DIR / 'metrics.json'
-STATIONS_PATH = REF_DIR / 'stations_catalog.csv'
-LAG_DEFAULTS_PATH = REF_DIR / 'station_hour_lag_defaults.csv'
+MODEL_DIR = ASSET_ROOT / "models"
+REF_DIR = ASSET_ROOT / "reference"
+
+MODEL_OUT_PATH = MODEL_DIR / "xgb_trips_out_model.json"
+MODEL_IN_PATH = MODEL_DIR / "xgb_trips_in_model.json"
+METRICS_PATH = MODEL_DIR / "metrics.json"
+STATIONS_PATH = REF_DIR / "stations_catalog.csv"
+LAG_DEFAULTS_PATH = REF_DIR / "station_hour_lag_defaults.csv"
+
+# imports ...
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+ASSET_ROOT = Path(os.getenv("ASSET_ROOT", str(PROJECT_ROOT / "assets")))
+MODEL_DIR = ASSET_ROOT / "models"
+REF_DIR = ASSET_ROOT / "reference"
+
+MODEL_OUT_PATH = MODEL_DIR / "xgb_trips_out_model.json"
+MODEL_IN_PATH = MODEL_DIR / "xgb_trips_in_model.json"
+METRICS_PATH = MODEL_DIR / "metrics.json"
+STATIONS_PATH = REF_DIR / "stations_catalog.csv"
+LAG_DEFAULTS_PATH = REF_DIR / "station_hour_lag_defaults.csv"
+
+for p in [MODEL_OUT_PATH, MODEL_IN_PATH, METRICS_PATH, STATIONS_PATH, LAG_DEFAULTS_PATH]:
+    if not p.exists():
+        raise FileNotFoundError(f"Missing file: {p}")
 
 # Business rule mapping (edit if your operation meaning is reversed)
 # send_bike   -> bikes needed to be sent out from station (uses trips_out)
